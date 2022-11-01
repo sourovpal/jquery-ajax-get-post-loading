@@ -25,6 +25,37 @@
     });
 });
 
+
+$.post('http://example.com/form.php', {category:'client', type:'premium'}, function(response){ 
+      alert("success");
+      $("#mypar").html(response.amount);
+});
+
+
+
+var request = $.ajax({
+  url: "script.php",
+  type: "POST",
+  data: {id : menuId},
+  dataType: "html"
+});
+
+request.done(function(msg) {
+  $("#log").html( msg );
+});
+
+request.fail(function(jqXHR, textStatus) {
+  alert( "Request failed: " + textStatus );
+});
+
+
+request.always(function () {
+        // Reenable the inputs
+        $inputs.prop("disabled", false);
+    });
+
+
+
 $body = $("body");
 
 $(document).on({
