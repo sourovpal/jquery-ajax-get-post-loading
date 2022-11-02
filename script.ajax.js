@@ -13,6 +13,12 @@
                 console.log('beforeSend', res);
             },
             success:function(res){
+               if(Object.keys(res.errors).length > 0){
+                    Object.keys(res.errors).forEach(function(key, index){
+                        var targetEl = $('#add_new_admin_form').find('input[name="'+key+'"]')[0];
+                        $(targetEl).parents('div.mb-3').append(`<span class="is-invalid">${res.errors[key][0]}</span>`);
+                    });
+                }
                 console.log('success', res);
             },
             error:function(res){
@@ -62,3 +68,23 @@ $(document).on({
     ajaxStart: function() { $body.addClass("loading");    },
      ajaxStop: function() { $body.removeClass("loading"); }    
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
